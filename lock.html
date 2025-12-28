@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock My World winnie 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="lock-body">
+
+    <div id="snow"></div>
+
+    <div class="lock-container">
+        <h1>𝗘𝗻𝘁𝗲𝗿 𝗠𝗮𝗻𝘄𝗶 𝗣𝗮𝘀𝘀𝗰𝗼𝗱𝗲</h1>
+
+        <input type="password" id="passcode" placeholder="ᴍᴀɴᴡɪ ᴄᴏᴅᴇ..." />
+
+        <button class="btn" onclick="checkPass()">𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝘁𝗼 𝘄𝗶𝗻𝗻𝗶𝗲 𝘄𝗼𝗿𝗹𝗱 💫</button>
+        <p id="error" class="error hidden">
+            แหนะ! เลขอะไรน้า ลองใหม่นะค้าบ 🐶🐱
+        </p>
+    </div>
+
+    <script>
+
+        const snowContainer = document.getElementById("snow");
+        setInterval(() => {
+            const snow = document.createElement("div");
+            snow.className = "snowflake";
+            snow.textContent = "❄";
+            snow.style.fontSize = Math.random() * 10 + 10 + "px";
+            snow.style.left = Math.random() * 100 + "vw";
+            snow.style.animationDuration = Math.random() * 8 + 12 + "s";
+            snowContainer.appendChild(snow);
+            setTimeout(() => snow.remove(), 10000);
+        }, 300);
+
+        const correctPass = "17";
+
+        function checkPass() {
+            const input = document.getElementById("passcode").value;
+            const error = document.getElementById("error");
+
+            if (input === correctPass) {
+
+                error.classList.add("hidden");
+
+                localStorage.setItem("isOwner", "true");
+
+                sessionStorage.setItem("fromPass", "true");
+
+                window.location.href = "main.html";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

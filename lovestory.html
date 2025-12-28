@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⁺◟꒰ Love Story Manwi ˚ ༘ ♡ ⋆｡</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .btn {
+            display: block;
+            margin: 14px auto;
+            padding: 12px 22px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* ===== MOBILE: Keep Two-Column Layout Scaled Down ===== */
+        @media (max-width: 768px) {
+
+            /* Keep timeline line in CENTER relative to container */
+            .timeline-vertical::after {
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                width: 4px !important;
+            }
+
+            /* Timeline item container */
+            .timeline-item {
+                position: relative !important;
+                min-height: 120px !important;
+                margin: 20px auto !important;
+                width: 100% !important;
+                display: block !important;
+            }
+
+            /* Common card styles */
+            .timeline-content,
+            .timeline-content.left,
+            .timeline-content.right,
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                position: absolute !important;
+                top: 0 !important;
+                width: 42% !important;
+                padding: 8px !important;
+                gap: 5px !important;
+                display: flex !important;
+                align-items: center !important;
+                margin: 0 !important;
+            }
+
+            /* Left Card Configuration */
+            .timeline-content.left,
+            .timeline-item:nth-child(odd) .timeline-content {
+                left: 2% !important;
+                right: auto !important;
+                transform: none !important;
+                flex-direction: row !important;
+                text-align: left !important;
+                justify-content: flex-start !important;
+            }
+
+            /* Right Card Configuration */
+            .timeline-content.right,
+            .timeline-item:nth-child(even) .timeline-content {
+                left: auto !important;
+                right: 2% !important;
+                transform: none !important;
+                flex-direction: row-reverse !important;
+                text-align: right !important;
+                justify-content: flex-start !important;
+            }
+
+            /* Text Alignment Override */
+            .timeline-content.left .text,
+            .timeline-item:nth-child(odd) .timeline-content .text {
+                text-align: left !important;
+            }
+
+            .timeline-content.right .text,
+            .timeline-item:nth-child(even) .timeline-content .text {
+                text-align: right !important;
+            }
+
+            /* Image Scaling */
+            .timeline-content img {
+                width: 50px !important;
+                height: 50px !important;
+                flex-shrink: 0 !important;
+            }
+
+            /* Text Scaling */
+            .timeline-content h3 {
+                font-size: 0.8em !important;
+                margin-bottom: 4px !important;
+                line-height: 1.2 !important;
+            }
+
+            .timeline-content p {
+                font-size: 0.7em !important;
+                line-height: 1.2 !important;
+                margin: 2px 0 !important;
+            }
+
+            .timeline-content .date {
+                font-size: 0.65em !important;
+            }
+
+            /* Dots Positioning */
+            .timeline-content::before,
+            .timeline-content.left::before,
+            .timeline-content.right::before,
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                width: 10px !important;
+                height: 10px !important;
+                top: 25px !important;
+                transform: none !important;
+            }
+
+            .timeline-content.left::before,
+            .timeline-item:nth-child(odd) .timeline-content::before {
+                right: -25px !important;
+                left: auto !important;
+            }
+
+            .timeline-content.right::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -25px !important;
+                right: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- transition -->
+    <div id="page-transition"></div>
+
+    <!-- snow -->
+    <div id="snow"></div>
+
+    <!-- music -->
+    <audio id="bgMusic" loop>
+        <source src="music/blooming.mp3" type="audio/mpeg">
+    </audio>
+
+        <!-- ================= TIMELINE ================= -->
+        <section id="timeline-section">
+
+            <h2 class="timeline-title">
+                ⁺◟꒰ ⋆𐙚 ̊ 𝗟𝗼𝘃𝗲 𝗦𝘁𝗼𝘁𝘆 𝗧𝘄𝗼 𝗬𝗲𝗮𝗿𝘀 𝗠𝗮𝗻𝘄𝗶 ˚ ༘ ♡ ⋆｡
+            </h2>
+
+            <div class="timeline-vertical">
+
+                <!-- item -->
+                <div class="timeline-item">
+                    <div class="timeline-content left">
+                        <img src="images/love1.jpg" alt="">
+                        <div class="text">
+                            <h3>เบิกรถหน้าแลนด์ 🚘</h3>
+                            <p>🐱 : ป๋าแมนนี่ มีรถให้วิโรจน์ยืมมั้ยคะ</p>
+                            <span class="date">20/04/2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content right">
+                        <img src="images/love2.jpg" alt="">
+                        <div class="text">
+                            <h3>ให้กล่องปืน 🔫</h3>
+                            <p>🐶 : เห็นลูกบอกว่าอยากได้ปืนครับ</p>
+                            <span class="date">05/05/2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content left">
+                        <img src="images/love3.jpg" alt="">
+                        <div class="text">
+                            <h3>พ่อสื่อกราฟฟิก 💘</h3>
+                            <p>🐱 : ป๋าแมนนี่มาหาใครที่นี่หรอคะ</p>
+                            <span class="date">08/05/2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content right">
+                        <img src="images/love4.jpg" alt="">
+                        <div class="text">
+                            <h3>กอดแรกที่เรือ 🛥️</h3>
+                            <p>🐶 : รีบๆ กลับมานะครับคิดถึง 🫣</p>
+                            <span class="date">08/05/2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content left">
+                        <img src="images/love5.jpg" alt="">
+                        <div class="text">
+                            <h3>ใส่กำไลคู่ด้วยกันครั้งแรก</h3>
+                            <p>🐶 : เดี๋ยวพาไปใส่กำไล</p>
+                            <span class="date">03/06/2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content right">
+                        <img src="images/love6.jpg" alt="">
+                        <div class="text">
+                            <h3>ลาบูบู้ ☺️</h3>
+                            <p>🐶 : ไม่อยากให้เธอใส่คู่กับคนอื่น</p>
+                            <span class="date">06/06/2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content left">
+                        <img src="images/love7.jpg" alt="">
+                        <div class="text">
+                            <h3>ขอเป็นแฟน 👀</h3>
+                            <p>🐶 : เป็นมั้ยแฟนอะ</p>
+                            <p>🐱 : ก็เป็นนี่ไง</p>
+                            <span class="date">30/07/2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content right">
+                        <img src="images/love8.jpg" alt="">
+                        <div class="text">
+                            <h3>ขอหมั้น 💍</h3>
+                            <p>🐶 : ไม่อยากให้เธอใส่คู่กับคนอื่น แค่ชี้เป็นคำตอบ</p>
+                            <p>🧔🏻 : สินสอดเงิน 200M ข้าวนอกแลนด์ 1000 จาน</p>
+                            <span class="date">12/08/2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content left">
+                        <img src="images/love9.jpg" alt="">
+                        <div class="text">
+                            <h3>งานหมั้น 💐</h3>
+                            <p>🐱 : เค้าดีใจนะที่เธออยู่กับเค้ามาจนถึงวันนี้</p>
+                            <p>🐶 : เค้าดีใจมาตลอด เธออยู่ให้เค้าได้ทำอะไรหลายอย่างมากขึ้น กล้าพูดมากขึ้น</p>
+                            <span class="date">15/08/2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content right">
+                        <img src="images/love10.jpg" alt="">
+                        <div class="text">
+                            <h3>Supra WRJ 4331 🚙</h3>
+                            <p>🐶 : ป้ายน่ารักเนอะ</p>
+                            <p>🐱 : วิโรจน์จ้าหรอ 🤣</p>
+                            <span class="date">12/09/2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content left">
+                        <img src="images/love11.jpg" alt="">
+                        <div class="text">
+                            <h3>ชุดฉลาม in last world 🦈</h3>
+                            <p>🐶 : เหนื่อยนิดหน่อย</p>
+                            <p>🐱 : อยู่กับเค้าเธอไม่ต้องเข้มแข็งก็ได้</p>
+                            <p>🐶 : อยู่กับแฟนแล้วหายเหนื่อยจริงจริงนะ</p>
+                            <span class="date">18/09/2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content right">
+                        <img src="images/love12.jpg" alt="">
+                        <div class="text">
+                            <h3>วัยเด็กพี่แมน หนูวิ 👦🏻👧🏻</h3>
+                            <p>🐱 : อย่ามาทำแบบนี้นะถ้าไม่มีใจ</p>
+                            <p>🐶 : ถ้าบอกว่ามีอะ มีใจ ให้หนูให้เธอ</p>
+                            <span class="date">20/09/2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content left">
+                        <img src="images/love13.jpg" alt="">
+                        <div class="text">
+                            <h3>Dindanland 🕰️</h3>
+                            <p>🥷🏻 : งามยิ่งนัก แม่นางบัวคำ</p>
+                            <p>👩🏻 : ใครๆ ก็อบากข้าเช่นนั้น</p>
+                            <p>🥷🏻 : แม่นางมีผัวหรือยัง ?</p>
+                            <span class="date">07/11/2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content right">
+                        <img src="images/love14.jpg" alt="">
+                        <div class="text">
+                            <h3>Deep Shcool 🏩</h3>
+                            <p>🐱 : นี่ไงเธอครบแล้ว</p>
+                            <p>🐶 : ครบ</p>
+                            <p>🐱 : นี่ไงเธอครบแล้ว เต็มตัวไปหมด อุ้ยน่ารักอะ</p>
+                            <span class="date">26/01/2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content left">
+                        <img src="images/love15.jpg" alt="">
+                        <div class="text">
+                            <h3>Nova Community 💎</h3>
+                            <p>🐶 : เบาะข้างซ้ายมันเป็นที่ของคุณ</p>
+                            <p>🐱 : ลองเป็นที่ของคนอื่นดูสิคะ ให้มันจริงเถอะค่ะ</p>
+                            <p>🐶 : ไม่น่ามีหรอกครับที่ของคุณ จริงเสมอจริงมาโดยตลอด</p>
+                            <span class="date">07/11/2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content right">
+                        <img src="images/love16.jpg" alt="">
+                        <div class="text">
+                            <h3>Happy Birthday to Wiroj 🎂 in Nova Community 💎</h3>
+                            <p>🐶 : ขอบคุณที่เข้ามาเป็นความสุขและอยู่ข้างๆมาตลอด</p>
+                            <span class="date">26/01/2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content left">
+                        <img src="images/love17.jpg" alt="">
+                        <div class="text">
+                            <h3>Byou City 🐰</h3>
+                            <p>🐱 : ให้แฟนดีกว่า รู้ว่าแฟนอยากได้ น่ารักอะ</p>
+                            <span class="date">22/12/2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote">
+                <p>⭐️ winnie มีอะไรจะบอกหนูสองคนด้วย 💙</p>
+            </div>
+
+            <button class="btn" onclick="toggleBless()">คำอวยพรจากทุกคน 🧤</button>
+            <div id="blessBox" class="hidden">
+                <div id="blessList"></div>
+            </div>
+
+            <button id="goCommentBtn" class="btn" onclick="goToComment()">
+               💌 อวยพรให้สองอ้วมแมนวิ 🐶🐱
+            </button>
+
+            <div id="messageBox" class="hidden">
+                <p id="loveCounter"></p>
+            </div>
+            <button class="btn" onclick="toggleLoveTime()">
+                เราอยู่ด้วยกันมากี่วันแล้วนะ
+            </button>
+
+            <button class="btn" onclick="goBack()">⬅ กลับหน้าแรก</button>
+
+ </section>
+
+        <script>
+            const isOwner = localStorage.getItem("isOwner") === "true";
+
+            if (isOwner) {
+                document.getElementById("goCommentBtn").style.display = "none";
+            }
+
+            function goToComment() {
+                window.location.href = "comment.html";
+            }
+
+            function goBack() {
+                window.location.href = "main.html";
+            }
+
+            const startDate = new Date("2024-05-30T00:00:00");
+
+            function updateLoveTime() {
+                const now = new Date();
+                let diff = Math.floor((now - startDate) / 1000);
+
+                const day = Math.floor(diff / 86400); diff %= 86400;
+                const h = Math.floor(diff / 3600); diff %= 3600;
+                const m = Math.floor(diff / 60);
+                const s = diff % 60;
+
+                document.getElementById("loveCounter").innerHTML =
+                    `💙 ${day} วัน ${h} ชม. ${m} นาที ${s} วินาที`;
+            }
+
+            updateLoveTime();
+            setInterval(updateLoveTime, 1000);
+
+            function toggleLoveTime() {
+                document.getElementById("messageBox").classList.toggle("hidden");
+            }
+
+            function toggleBless() {
+                document.getElementById("blessBox").classList.toggle("hidden");
+            }
+        </script>
+
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+            import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+            const app = initializeApp({
+                apiKey: "AIzaSyD1MqNgu9gpH35IfsmKG-I1LuGO34DW_no",
+                databaseURL: "https://happy-new-year-manwi-default-rtdb.asia-southeast1.firebasedatabase.app"
+            });
+
+            const db = getDatabase(app);
+            const blessList = document.getElementById("blessList");
+
+            onValue(ref(db, "lovestory-comments"), (snapshot) => {
+                blessList.innerHTML = "";
+                snapshot.forEach((child) => {
+                    const d = child.val();
+                    blessList.innerHTML += `
+                    <div class="bless">
+                        <b>${d.name}</b><br>${d.msg}
+                    </div>
+                `;
+                });
+            });
+
+            const music = document.getElementById("bgMusic");
+        window.addEventListener("load", () => {
+            if (localStorage.getItem("musicStarted") === "true") {
+                music.currentTime = localStorage.getItem("musicTime") || 0;
+                music.volume = 0.35;
+                music.play().catch(() => { });
+            }
+        });
+
+        setInterval(() => {
+            if (!music.paused) {
+                localStorage.setItem("musicTime", music.currentTime);
+            }
+        }, 500);
+
+        window.addEventListener("load", () => {
+            const t = document.getElementById("page-transition");
+            t.classList.remove("active");
+            t.style.pointerEvents = "none";
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const snowContainer = document.getElementById("snow");
+
+            function createSnowflake() {
+                const snowflake = document.createElement("div");
+                snowflake.className = "snowflake";
+                snowflake.innerText = "❄";
+                snowflake.style.fontSize = Math.random() * 18 + 18 + "px";
+                snowflake.style.left = Math.random() * 100 + "vw";
+                snowflake.style.animationDuration = Math.random() * 8 + 12 + "s";
+
+                snowContainer.appendChild(snowflake);
+                setTimeout(() => snowflake.remove(), 10000);
+            }
+
+            setInterval(createSnowflake, 300);
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,840 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600&display=swap');
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+* {
+    box-sizing: border-box;
+}
+/* ใส่ในไฟล์ style.css */
+.lock-body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    
+    /* เรียกใช้ไฟล์จากโฟลเดอร์ gif */
+    background-image: url('gif/bg.gif'); 
+    
+    /* ตั้งค่าให้ภาพเต็มจอและไม่เลื่อนตาม */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    margin: 0;
+    font-family: 'Sarabun', sans-serif;
+    color: #333;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.hidden {
+    display: none;
+}
+
+/* =====================================================
+   INDEX PAGE
+===================================================== */
+.index-body {
+    background: linear-gradient(180deg, #c7e5f8, #b8e0f9);
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+h1,
+h2 {
+    color: #0a0a0a;
+}
+
+.intro {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* =====================================================
+   VIDEO
+===================================================== */
+.slideshow {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 360px;
+    margin: 0 auto 40px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(255, 92, 141, 0.3);
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+.btn {
+    background: #99cfef;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #2eaedc;
+}
+/* =====================================================
+   TIMELINE SECTION
+===================================================== */
+#timeline-section {
+    padding: 60px 20px;
+    background: #d3e2fa;
+    text-align: center;
+}
+
+/* =====================================================
+   TIMELINE WRAPPER
+===================================================== */
+.timeline {
+    position: relative;
+}
+
+/* =====================================================
+   VERTICAL LINE
+===================================================== */
+.timeline-vertical {
+    position: relative;
+    margin: 50px auto;
+    max-width: 800px;
+}
+
+.timeline-vertical::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: #a97238;
+    transform: translateX(-50%);
+}
+
+/* =====================================================
+   TIMELINE ITEM
+===================================================== */
+.timeline-item {
+    position: relative;
+    min-height: 200px; /* กันซ้อน */
+    margin: 50px 0;
+}
+
+
+/* =====================================================
+   TIMELINE CARD
+===================================================== */
+.timeline-content {
+    position: absolute;
+    top: 0;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #ffeeee;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(255, 92, 141, 0.2);
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+.timeline-content img {
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+/* =====================================================
+   LEFT (odd) – start from left
+===================================================== */
+.timeline-item:nth-child(odd) .timeline-content {
+    left: 50%;
+    transform: translateX(-100%);
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+/* =====================================================
+   RIGHT (even)
+===================================================== */
+.timeline-item:nth-child(even) .timeline-content {
+    left: 50%;
+    transform: translateX(0);
+}
+
+
+/* =====================================================
+   DOT (center line)
+===================================================== */
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    background: #b6743e;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+
+/* dot – left side */
+.timeline-item:nth-child(odd) .timeline-content::before {
+    left: 360px;
+}
+
+
+/* dot – right side */
+.timeline-item:nth-child(even) .timeline-content::before {
+    left: 0.5px;
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
+.timeline-content .text {
+    text-align: left;
+}
+
+.timeline-content h3 {
+    color: #ff5c8d;
+}
+
+.timeline-content .date {
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* =====================================================
+   MESSAGE & BLESS
+===================================================== */
+#messageBox {
+    margin-top: 30px;
+    background: #fff0f4;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(255, 92, 141, 0.2);
+    animation: fadeIn 0.6s ease;
+}
+
+#blessBox {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.bless {
+    background: #fff;
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+/* =====================================================
+   LOCK PAGE
+===================================================== */
+.lock-body {
+    background: url("gif/bg.gif") center / cover no-repeat fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lock-container {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 40px 30px;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(255, 92, 141, 0.3);
+    max-width: 350px;
+    width: 100%;
+    text-align: center;
+}
+
+.lock-container h1 {
+    color: #ff5c8d;
+}
+
+.lock-container input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.error {
+    color: #ff4d6d;
+    font-size: 0.9em;
+}
+
+/* =====================================================
+   PAGE TRANSITION
+===================================================== */
+/* page transition */
+#page-transition {
+    position: fixed;
+    inset: 0;
+    background: #fff0f5;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+}
+
+#page-transition.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* snow */
+#snow {
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+.slide-up {
+    animation: slideUp 0.6s ease forwards;
+}
+
+/* =====================================================
+   SNOW EFFECT
+===================================================== */
+/* กล่องหิมะ */
+#snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+/* แต่ละเกล็ดหิมะ */
+.snowflake {
+    position: absolute;
+    top: -2em;    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+    
+    /* Tablet (768px and below) */
+    @media (max-width: 768px) {
+        .container {
+            padding: 30px 15px;
+        }
+    
+        h1, h2 {
+            font-size: 1.5em;
+        }
+    
+        .intro {
+            font-size: 1em;
+        }
+    
+        .slideshow {
+            max-width: 90%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+        }
+    
+        /* Timeline Tablet */
+        #timeline-section {
+            padding: 40px 15px;
+        }
+    
+        .timeline-vertical::after {
+            left: 15px;
+        }
+    
+        .timeline-content {
+            width: 85%;
+            left: 50px !important;
+            flex-direction: column;
+            text-align: center;
+        }
+    
+        .timeline-item:nth-child(odd) .timeline-content {
+            transform: translateX(0);
+        }
+    
+        .timeline-item:nth-child(even) .timeline-content {
+            transform: translateX(0);
+        }
+    
+        .timeline-content::before {
+            left: 0 !important;
+        }
+    
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: 0 !important;
+        }
+    
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: 0 !important;
+        }
+    
+        .timeline-content img {
+            width: 100px;
+            height: 100px;
+        }
+    
+        .lock-container {
+            max-width: 90%;
+            padding: 30px 20px;
+        }
+    
+        .lock-container input {
+            padding: 10px;
+            font-size: 16px;
+        }
+    
+        .btn {
+            font-size: 14px;
+            padding: 10px 16px;
+        }
+    
+        #messageBox, #blessBox {
+            margin: 15px 10px;
+            padding: 15px;
+        }
+    }
+    
+    /* Mobile (480px and below) */
+    @media (max-width: 480px) {
+        body {
+            font-size: 14px;
+        }
+    
+        h1 {
+            font-size: 1.2em;
+        }
+    
+        h2 {
+            font-size: 1.1em;
+        }
+    
+        .container {
+            padding: 20px 10px;
+        }
+    
+        .intro {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+    
+        .slideshow {
+            max-width: 95%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+    
+        /* Timeline Mobile */
+        #timeline-section {
+            padding: 30px 10px;
+        }
+    
+        .timeline-vertical {
+            max-width: 100%;
+            margin: 30px auto;
+        }
+    
+        .timeline-vertical::after {
+            left: 10px;
+            width: 3px;
+        }
+    
+        .timeline-item {
+            min-height: 150px;
+            margin: 30px 0;
+        }
+    
+        .timeline-content {
+            position: relative !important;
+            width: 95% !important;
+            left: 30px !important;
+            transform: none !important;
+            flex-direction: column;
+            text-align: center;
+            padding: 15px;
+            gap: 10px;
+        }
+    
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 30px !important;
+            transform: none !important;
+            flex-direction: column;
+        }
+    
+        .timeline-item:nth-child(even) .timeline-content {
+            left: 30px !important;
+            transform: none !important;
+            flex-direction: column;
+        }
+    
+        .timeline-content img {
+            width: 80px;
+            height: 80px;
+            order: -1;
+        }
+    
+        .timeline-content::before {
+            left: -8px !important;
+            top: 20px !important;
+        }
+    
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -8px !important;
+        }
+    
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -8px !important;
+        }
+    
+        .timeline-content h3 {
+            font-size: 1em;
+            margin: 8px 0;
+        }
+    
+        .timeline-content p {
+            font-size: 0.85em;
+            margin: 5px 0;
+        }
+    
+        .timeline-content .date {
+            font-size: 0.8em;
+        }
+    
+        .timeline-content .text {
+            text-align: center;
+        }
+    
+        .btn {
+            font-size: 13px;
+            padding: 10px 14px;
+            margin: 10px auto;
+        }
+    
+        .lock-container {
+            padding: 20px 15px;
+            max-width: 95%;
+        }
+    
+        .lock-container h1 {
+            font-size: 1.2em;
+        }
+    
+        .lock-container input {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+    
+        .error {
+            font-size: 0.85em;
+        }
+    
+        #blessBox {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+    
+        .bless {
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+    
+        #messageBox {
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 0.95em;
+        }
+    
+        .quote {
+            padding: 15px;
+            font-size: 0.95em;
+        }
+    }
+    
+    /* Small Mobile (360px and below) */
+    @media (max-width: 360px) {
+        .timeline-content {
+            left: 25px !important;
+        }
+    
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 25px !important;
+        }
+    
+        .timeline-item:nth-child(even) .timeline-content {
+            left: 25px !important;
+        }
+    
+        .timeline-content img {
+            width: 70px;
+            height: 70px;
+        }
+    
+        h1 {
+            font-size: 1em;
+        }
+    
+        h2 {
+            font-size: 1em;
+        }
+    
+        .btn {
+            font-size: 12px;
+            padding: 8px 12px;
+        }
+    }
+    
+    /* Large Desktop (1200px and above) */
+    @media (min-width: 1200px) {
+        .container {
+            padding: 60px 40px;
+        }
+    
+        .slideshow {
+            max-width: 700px;
+        }
+    
+        #timeline-section {
+            padding: 80px 40px;
+        }
+    }
+    color: white;
+    user-select: none;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+
+/* Animation ให้หิมะตกลงมา */
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0.8;
+    }
+}
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 15px;
+    }
+
+    h1, h2 {
+        font-size: 1.5em;
+    }
+
+    .intro {
+        font-size: 1em;
+    }
+
+    .slideshow {
+        max-width: 90%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .timeline-content {
+        width: 90%;
+        left: 5% !important;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .timeline-content::before {
+        display: none;
+    }
+
+    .timeline-vertical::after {
+        left: 20px;
+    }
+
+    .lock-container {
+        max-width: 90%;
+        padding: 30px 20px;
+    }
+
+    .lock-container input {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+
+    #messageBox, #blessBox {
+        margin: 15px 10px;
+        padding: 15px;
+    }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    h2 {
+        font-size: 1.1em;
+    }
+
+    .container {
+        padding: 20px 10px;
+    }
+
+    .intro {
+        font-size: 0.9em;
+        margin-bottom: 20px;
+    }
+
+    .slideshow {
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        font-size: 13px;
+        padding: 10px 14px;
+        margin: 10px auto;
+    }
+
+    .timeline-content {
+        width: 95%;
+        left: 2.5% !important;
+    }
+
+    .timeline-vertical::after {
+        left: 15px;
+    }
+
+    .lock-container {
+        padding: 20px 15px;
+        max-width: 95%;
+    }
+
+    .lock-container h1 {
+        font-size: 1.2em;
+    }
+
+    .lock-container input {
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .error {
+        font-size: 0.85em;
+    }
+
+    #blessBox {
+        max-height: 200px;
+    }
+
+    .bless {
+        padding: 8px;
+        margin-bottom: 8px;
+        font-size: 0.9em;
+    }
+
+    #messageBox {
+        padding: 15px;
+        margin-top: 15px;
+    }
+}
+
+/* Large Desktop (1200px and above) */
+@media (min-width: 1200px) {
+    .container {
+        padding: 60px 40px;
+    }
+
+    .slideshow {
+        max-width: 700px;
+    }
+}

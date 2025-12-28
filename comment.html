@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <title>💌 อวยพรให้สองอ้วมแมนวิ 🐶🐱</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background: #fff5f8;
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ff5c8a;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        textarea {
+            min-height: 100px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff8fab;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff5c8a;
+        }
+
+        .note {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>💖 ฝากคำอวยพรถึงเรา</h2>
+
+    <input id="name" placeholder="ชื่อของคุณ">
+    <textarea id="message" placeholder="เขียนคำอวยพรจากใจ..."></textarea>
+    <button id="sendBtn" onclick="sendComment()">ส่งคำอวยพร 💌</button>
+
+    <div class="note" id="noteText">
+        ข้อความของคุณจะขึ้นแบบเรียลไทม์ 💬<br>
+        บนหน้า Love Story
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1MqNgu9gpH35IfsmKG-I1LuGO34DW_no",
+            authDomain: "happy-new-year-manwi.firebaseapp.com",
+            databaseURL: "https://happy-new-year-manwi-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "happy-new-year-manwi",
+            storageBucket: "happy-new-year-manwi.firebasestorage.app",
+            messagingSenderId: "569932788564",
+            appId: "1:569932788564:web:a5e95dd78ccf2cba208ec1"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        const isOwner = localStorage.getItem("isOwner") === "true";
+
+        if (isOwner) {
+            document.getElementById("name").style.display = "none";
+            document.getElementById("message").style.display = "none";
+            document.getElementById("sendBtn").style.display = "none";
+
+            document.getElementById("noteText").innerHTML = `
+                💙 หน้านี้สำหรับอ่านคำอวยพรจากทุกคน<br>
+                ขอบคุณที่ทุกคนรักเรานะ
+            `;
+        }
+
+        window.sendComment = function () {
+
+            if (isOwner) {
+                alert("หน้านี้สำหรับรับคำอวยพรเท่านั้นนะ 💙");
+                return;
+            }
+
+            const name = document.getElementById("name").value.trim();
+            const msg = document.getElementById("message").value.trim();
+
+            if (!name || !msg) {
+                alert("กรุณากรอกชื่อและคำอวยพรก่อนนะ 💕");
+                return;
+            }
+
+            push(ref(db, "lovestory-comments"), {
+                name: name,
+                msg: msg,
+                time: Date.now()
+            });
+            
+            alert("ส่งคำอวยพรเรียบร้อย 💖");
+            window.location.href = "main.html";
+        };
+    </script>
+
+</body>
+
+</html>

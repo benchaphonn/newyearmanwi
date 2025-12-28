@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="index-body">
+
+    <div id="page-transition"></div>
+    <div id="snow"></div>
+
+    <audio id="bgMusic" loop>
+        <source src="music/blooming.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <h1>⋆𐙚 ̊. 𝗠𝗮𝗻𝘄𝗶 𝗦𝘁𝗼𝗿𝘆 .☘︎ ݁˖</h1>
+        <p class="intro">𝗛𝗮𝗽𝗽𝘆 𝗡𝗲𝘄 𝗬𝗲𝗮𝗿 𝗯𝘆 𝘄𝗶𝗻𝗻𝗶𝗲 💫</p>
+
+        <div class="slideshow">
+            <video class="slide" id="myVideo" loop playsinline>
+                <source src="videos/mannywiroj.mp4" type="video/mp4">
+            </video>
+        </div>
+
+
+        <p>‧⁺◟꒰ 🦌🎄꒱˚ ༘♡ ᴀ ᴘʀᴇsᴇɴᴛ .’ 🎁⌇ғᴏʀ ʏᴏᴜ 🧸˚ ༘ ♡ ⋆｡🎅🏻🎁₊˚•</p>
+        <button class="btn" onclick="playVideo()">▶ ᴏᴘᴇɴ ᴄʟɪᴘ</button>
+
+        <p>*.❅·🧣⋆·˚ ༘ ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴍᴇᴍᴏᴇʏ ᴍᴀɴᴡɪ ʙʏ ᴡɪɴɴɪᴇ ₊˚ 🎀 ꔛ 🧸﹆ •</p>
+        <button class="btn" onclick="goToLoveStory()">ᴍᴇᴍᴏᴇʏ ᴍᴀɴᴡɪ ⭐️</button>
+    </div>
+
+    <script>
+        function playVideo() {
+            const video = document.getElementById("myVideo");
+            video.muted = false;
+            video.volume = 1;
+            video.play();
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const snowContainer = document.getElementById("snow");
+
+            function createSnowflake() {
+                const snowflake = document.createElement("div");
+                snowflake.className = "snowflake";
+                snowflake.innerText = "❄";
+                snowflake.style.fontSize = Math.random() * 18 + 18 + "px";
+                snowflake.style.left = Math.random() * 100 + "vw";
+                snowflake.style.animationDuration = Math.random() * 8 + 12 + "s";
+
+                snowContainer.appendChild(snowflake);
+                setTimeout(() => snowflake.remove(), 10000);
+            }
+
+            setInterval(createSnowflake, 300);
+        });
+
+        const music = document.getElementById("bgMusic");
+
+        function startBgMusic() {
+            if (music.dataset.started) return;
+
+            music.volume = 0.35;
+            music.play().catch(() => { });
+            music.dataset.started = "true";
+
+            music._saveTimer = setInterval(() => {
+                localStorage.setItem("musicTime", music.currentTime);
+                localStorage.setItem("musicStarted", "true");
+            }, 500);
+        }
+
+        function goToLoveStory() {
+
+            startBgMusic();
+    
+            const transition = document.getElementById("page-transition");
+            transition.classList.add("active", "slide-up");
+    
+            setTimeout(() => {
+                window.location.href = "lovestory.html";
+            }, 600);
+        }
+    </script>
+
+    <script>
+
+        if (!sessionStorage.getItem("fromPass")) {
+            localStorage.setItem("isOwner", "false");
+        }
+    
+        sessionStorage.removeItem("fromPass");
+    </script>
+
+    <script>
+        
+        if (localStorage.getItem("isOwner") !== "true") {
+            localStorage.setItem("isOwner", "false");
+        }
+    </script>    
+    
+</body>
+
+</html>
