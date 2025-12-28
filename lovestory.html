@@ -148,7 +148,7 @@
     <div id="snow"></div>
 
     <!-- music -->
-    <audio id="bgMusic" loop>
+    <audio id="bgMusic" loop playsinline muted>
         <source src="music/blooming.mp3" type="audio/mpeg">
     </audio>
 
@@ -432,15 +432,15 @@
         <script type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
             import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-
+    
             const app = initializeApp({
                 apiKey: "AIzaSyD1MqNgu9gpH35IfsmKG-I1LuGO34DW_no",
                 databaseURL: "https://happy-new-year-manwi-default-rtdb.asia-southeast1.firebasedatabase.app"
             });
-
+    
             const db = getDatabase(app);
             const blessList = document.getElementById("blessList");
-
+    
             onValue(ref(db, "lovestory-comments"), (snapshot) => {
                 blessList.innerHTML = "";
                 snapshot.forEach((child) => {
@@ -452,48 +452,76 @@
                 `;
                 });
             });
-
+    
+            // ==================== MUSIC PLAYER ====================
             const music = document.getElementById("bgMusic");
-        window.addEventListener("load", () => {
-            if (localStorage.getItem("musicStarted") === "true") {
+    
+            // ฟังก์ชันเล่นเพลง
+            function playMusic() {
+                music.muted = false;
                 music.currentTime = localStorage.getItem("musicTime") || 0;
                 music.volume = 0.35;
-                music.play().catch(() => { });
+                music.play().catch((err) => {
+                    console.log("ไม่สามารถเล่นเพลงได้:", err);
+                });
+                localStorage.setItem("musicStarted", "true");
             }
-        });
-
-        setInterval(() => {
-            if (!music.paused) {
-                localStorage.setItem("musicTime", music.currentTime);
-            }
-        }, 500);
-
-        window.addEventListener("load", () => {
-            const t = document.getElementById("page-transition");
-            t.classList.remove("active");
-            t.style.pointerEvents = "none";
-        });
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const snowContainer = document.getElementById("snow");
-
-            function createSnowflake() {
-                const snowflake = document.createElement("div");
-                snowflake.className = "snowflake";
-                snowflake.innerText = "❄";
-                snowflake.style.fontSize = Math.random() * 18 + 18 + "px";
-                snowflake.style.left = Math.random() * 100 + "vw";
-                snowflake.style.animationDuration = Math.random() * 8 + 12 + "s";
-
-                snowContainer.appendChild(snowflake);
-                setTimeout(() => snowflake.remove(), 10000);
-            }
-
-            setInterval(createSnowflake, 300);
-        });
-
-    </script>
-
-</body>
-
-</html>
+    
+            // เรียกใช้งานเมื่อ page load
+            window.addEventListener("load", () => {
+                // เล่นเพลงอัตโนมัติ (ลองทุกวิธี)
+                playMusic();
+    
+                // สำรองใช้ setTimeout
+                setTimeout(() => {
+                    playMusic();
+                }, 500);
+    
+                // ลบ transition effect
+                const t = document.getElementById("page-transition");
+                if (t) {
+                    t.classList.remove("active");
+                    t.style.pointerEvents = "none";
+                }
+            });
+    
+            // เรียกเมื่อ user interaction ครั้งแรก
+            document.addEventListener("click", () => {
+                playMusic();
+            }, { once: true });
+    
+            document.addEventListener("touchstart", () => {
+                playMusic();
+            }, { once: true });
+    
+            // เก็บเวลาเพลง
+            setInterval(() => {
+                if (!music.paused) {
+                    localStorage.setItem("musicTime", music.currentTime);
+                }
+            }, 500);
+    
+            // สร้าง snowflake
+            document.addEventListener("DOMContentLoaded", () => {
+                const snowContainer = document.getElementById("snow");
+    
+                function createSnowflake() {
+                    const snowflake = document.createElement("div");
+                    snowflake.className = "snowflake";
+                    snowflake.innerText = "❄";
+                    snowflake.style.fontSize = Math.random() * 18 + 18 + "px";
+                    snowflake.style.left = Math.random() * 100 + "vw";
+                    snowflake.style.animationDuration = Math.random() * 8 + 12 + "s";
+    
+                    snowContainer.appendChild(snowflake);
+                    setTimeout(() => snowflake.remove(), 10000);
+                }
+    
+                setInterval(createSnowflake, 300);
+            });
+    
+        </script>
+    
+    </body>
+    
+    </html>
