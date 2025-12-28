@@ -21,40 +21,49 @@
         <p id="error" class="error hidden">
             แหนะ! เลขอะไรน้า ลองใหม่นะค้าบ 🐶🐱
         </p>
-    </div>
 
-    <script>
+        <script>
+            // Snowflake Animation
+            const snowContainer = document.getElementById("snow");
+            setInterval(() => {
+                const snow = document.createElement("div");
+                snow.className = "snowflake";
+                snow.textContent = "❄";
+                snow.style.fontSize = Math.random() * 10 + 10 + "px";
+                snow.style.left = Math.random() * 100 + "vw";
+                snow.style.animationDuration = Math.random() * 8 + 12 + "s";
+                snowContainer.appendChild(snow);
+                setTimeout(() => snow.remove(), 10000);
+            }, 300);
 
-        const snowContainer = document.getElementById("snow");
-        setInterval(() => {
-            const snow = document.createElement("div");
-            snow.className = "snowflake";
-            snow.textContent = "❄";
-            snow.style.fontSize = Math.random() * 10 + 10 + "px";
-            snow.style.left = Math.random() * 100 + "vw";
-            snow.style.animationDuration = Math.random() * 8 + 12 + "s";
-            snowContainer.appendChild(snow);
-            setTimeout(() => snow.remove(), 10000);
-        }, 300);
+            // Passcode Logic
+            const correctPass = "17";
 
-        const correctPass = "17";
+            function checkPass() {
+                const input = document.getElementById("passcode").value;
+                const error = document.getElementById("error");
 
-        function checkPass() {
-            const input = document.getElementById("passcode").value;
-            const error = document.getElementById("error");
-
-            if (input === correctPass) {
-
-                error.classList.add("hidden");
-
-                localStorage.setItem("isOwner", "true");
-
-                sessionStorage.setItem("fromPass", "true");
-
-                window.location.href = "main.html";
+                if (input === correctPass) {
+                    error.classList.add("hidden");
+                    localStorage.setItem("isOwner", "true");
+                    sessionStorage.setItem("fromPass", "true");
+                    window.location.href = "main.html";
+                } else {
+                    // แสดง error message เมื่อรหัสผิด
+                    error.classList.remove("hidden");
+                    document.getElementById("passcode").value = "";
+                }
             }
-        }
-    </script>
+
+            // ให้ Enter key ทำงานได้เหมือนกับคลิกปุ่ม
+            document.getElementById("passcode").addEventListener("keypress", function (e) {
+                if (e.key === "Enter") {
+                    checkPass();
+                }
+            });
+        </script>
+
+    </div>
 
 </body>
 
